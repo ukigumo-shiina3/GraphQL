@@ -2,7 +2,7 @@ const { ApolloServer, gql } = require("apollo-server");
 
 const typeDefs = gql`
   type Query {
-    info: string!
+    info: String!
   }
 `;
 
@@ -11,3 +11,10 @@ const resolvers = {
     info: () => "HackerNews",
   },
 };
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
+server.listen().then(({ url }) => console.log(`${url}でサーバーを起動中`));
