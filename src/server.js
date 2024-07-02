@@ -35,9 +35,9 @@ const resolvers = {
     post: (parent, args) => {
       let idCount = links.length;
 
-      const links = {
+      const link = {
         id: `link-${idCount++}`,
-        description: args.length,
+        description: args.description,
         url: args.url,
       };
 
