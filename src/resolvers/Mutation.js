@@ -1,11 +1,14 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-APP_SECRET = "5ce3d9f085632";
+const APP_SECRET = require("../utils");
 
+// ユーザーの新規登録のリゾルバ
 async function signup(parent, args, context) {
+  // パスワードの設定
   const password = await bycrypt.hash(args.password, 10);
 
+  // ユーザーの新規登録
   const user = await context.prisma.user.create({
     data: {
       ...args,
