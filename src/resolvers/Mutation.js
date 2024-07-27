@@ -54,6 +54,7 @@ async function post(parent, args, context) {
     data: {
       url: args.url,
       description: args.description,
+      postedBy: context.userId,
     },
   });
 }
