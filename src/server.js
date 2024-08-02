@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 const { getUserId } = require("./utils");
 
 // リゾルバ関係のファイル
