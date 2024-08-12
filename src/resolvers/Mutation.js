@@ -81,10 +81,21 @@ async function vote(parent, args, context) {
   if (Boolean(vote)) {
     throw new Error(`すでにその投稿には投票されています :${args.linkId}`);
   }
+  // 投票する
+  const newVote = context.prisma.vote.create({
+    data: {
+      user: { connect: { id: userId } },
+      link: { connect: { id: Number(args.linkId) } },
+    },
+  });
+  // 送信
+  context.pubsub.publish("NEW_VOTE, newVote");
+  return newVote;
 }
 
 module.exports = {
   signup,
   login,
   post,
+  vote,
 };
